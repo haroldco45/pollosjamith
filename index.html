@@ -3,96 +3,161 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pollos Yamith | Pedidos</title>
+    <title>Pollos Yamith | App de Pedidos</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         .gradient-header { background: linear-gradient(135deg, #b91c1c 0%, #ef4444 100%); }
+        #vencido { display: none; }
     </style>
 </head>
 <body class="bg-gray-100 text-gray-800 font-sans pb-10">
 
+    <div id="vencido" class="fixed inset-0 bg-white z-50 flex flex-col items-center justify-center p-10 text-center">
+        <i class="fas fa-lock text-red-500 text-6xl mb-4"></i>
+        <h1 class="text-2xl font-black text-gray-800 uppercase text-red-600">Suscripción Vencida</h1>
+        <p class="text-gray-600 mt-2">Acceso restringido. Por favor contacte al desarrollador para renovar.</p>
+        <div class="mt-6 bg-gray-50 p-4 rounded-2xl border">
+            <span class="text-blue-700 font-black text-xl tracking-tighter uppercase">VIBRAS POSITIVAS</span>
+            <p class="text-[10px] text-gray-400 font-bold uppercase mt-1">© Todos los derechos reservados</p>
+        </div>
+        <a href="https://wa.me/573116346595?text=Hola! Mi suscripción de la App Pollos Yamith ha vencido." class="mt-6 bg-green-500 text-white px-8 py-3 rounded-full font-bold shadow-lg">RENOVAR AHORA</a>
+    </div>
+
     <div id="app-content">
-        <header class="gradient-header text-white p-6 text-center shadow-lg">
+        <header class="gradient-header text-white p-6 text-center shadow-md relative">
             <div class="flex justify-center mb-3">
                 <img src="pollo-jamith.png" alt="Logo Pollos Yamith" 
                      onerror="this.src='https://via.placeholder.com/150?text=Pollos+Yamith'"
-                     class="h-28 w-28 rounded-full border-4 border-white shadow-2xl bg-white object-cover">
+                     class="h-28 w-28 rounded-full border-4 border-white shadow-xl bg-white object-cover">
             </div>
-            <h1 class="text-3xl font-black uppercase tracking-tighter">Pollos Yamith</h1>
-            <p class="text-xs font-bold opacity-90 italic">Sabor Semi-Criollo de Calidad</p>
+            <h1 class="text-3xl font-black uppercase tracking-tighter leading-none">Pollos Yamith</h1>
+            <p class="text-xs font-bold opacity-90 mt-1 italic uppercase">Sabor Semi-Criollo de Calidad</p>
         </header>
 
         <main class="max-w-md mx-auto p-4 space-y-5">
-            <div class="text-center bg-white py-2 rounded-xl border text-[10px] text-gray-400 font-bold uppercase tracking-widest">
-                Aldea verde manzana 46 lote 4, Barrio Paraguay
+            <div class="text-center bg-white py-2 rounded-xl shadow-sm border text-[10px] text-gray-500 font-bold uppercase tracking-widest leading-tight">
+                Aldea verde manzana 46 lote 4, Barrio Paraguay<br>WhatsApp: 311 634 6595
             </div>
 
             <section class="bg-white p-5 rounded-3xl shadow-md border-t-8 border-red-600">
-                <h3 class="font-black text-[10px] text-gray-400 uppercase mb-4 tracking-widest">Tus Datos</h3>
+                <h3 class="font-black text-[10px] text-gray-400 uppercase tracking-widest mb-4 italic">Información para la Entrega</h3>
                 <div class="space-y-3">
-                    <input type="text" id="nombre" placeholder="¿A nombre de quién?" class="w-full p-4 bg-gray-50 border rounded-2xl outline-none focus:ring-2 focus:ring-red-500">
-                    <input type="text" id="direccion" placeholder="Dirección exacta" class="w-full p-4 bg-gray-50 border rounded-2xl outline-none focus:ring-2 focus:ring-red-500">
+                    <div class="relative">
+                        <i class="fas fa-user absolute left-4 top-4 text-gray-300"></i>
+                        <input type="text" id="nombre" placeholder="Nombre completo" class="w-full pl-10 p-4 bg-gray-50 border rounded-2xl outline-none focus:ring-2 focus:ring-red-500">
+                    </div>
+                    <div class="relative">
+                        <i class="fas fa-map-marker-alt absolute left-4 top-4 text-gray-300"></i>
+                        <input type="text" id="direccion" placeholder="Dirección y Ciudad" class="w-full pl-10 p-4 bg-gray-50 border rounded-2xl outline-none focus:ring-2 focus:ring-red-500">
+                    </div>
+                    <div class="relative">
+                        <i class="fas fa-phone absolute left-4 top-4 text-gray-300"></i>
+                        <input type="tel" id="telefono" placeholder="Número de Celular" class="w-full pl-10 p-4 bg-gray-50 border rounded-2xl outline-none focus:ring-2 focus:ring-red-500">
+                    </div>
                 </div>
             </section>
 
             <section class="bg-white p-5 rounded-3xl shadow-md">
-                <div class="flex items-center justify-between mb-5">
-                    <div class="flex items-center gap-3">
-                        <i class="fas fa-drumstick-bite text-red-600 text-2xl"></i>
-                        <h2 class="font-black text-lg text-gray-800 uppercase">Libra de Pollo</h2>
+                <div class="flex items-center gap-4 mb-5">
+                    <div class="bg-red-50 p-4 rounded-2xl text-red-600 border border-red-100">
+                        <i class="fas fa-drumstick-bite text-2xl"></i>
                     </div>
-                    <p class="text-green-600 font-black text-2xl">$7.500</p>
+                    <div>
+                        <h2 class="font-black text-lg text-gray-800 uppercase leading-none">Pollo Semi-Criollo</h2>
+                        <p class="text-green-600 font-black text-2xl mt-1">$7.500 <span class="text-gray-400 font-normal text-xs italic">/ Libra</span></p>
+                    </div>
                 </div>
-                <div class="bg-gray-100 p-4 rounded-2xl flex items-center justify-between border">
-                    <span class="font-black text-gray-400 uppercase text-[10px]">Cantidad</span>
+                <div class="bg-gray-50 p-4 rounded-2xl flex items-center justify-between border">
+                    <span class="font-black text-gray-400 uppercase text-[10px]">Cantidad de Libras</span>
                     <div class="flex items-center gap-6">
-                        <button onclick="cambiarCantidad(-1)" class="bg-white text-red-600 w-10 h-10 rounded-full font-black text-xl shadow">-</button>
-                        <span id="cantidad" class="text-2xl font-black">0</span>
-                        <button onclick="cambiarCantidad(1)" class="bg-red-600 text-white w-10 h-10 rounded-full font-black text-xl shadow">+</button>
+                        <button onclick="cambiarCantidad(-1)" class="bg-white text-red-600 w-11 h-11 rounded-xl font-black text-xl shadow border border-red-100 active:scale-90 transition-transform">-</button>
+                        <span id="cantidad" class="text-2xl font-black w-8 text-center text-gray-800">0</span>
+                        <button onclick="cambiarCantidad(1)" class="bg-red-600 text-white w-11 h-11 rounded-xl font-black text-xl shadow active:scale-90 transition-transform">+</button>
                     </div>
                 </div>
             </section>
 
-            <section class="bg-gray-900 text-white p-6 rounded-3xl shadow-xl">
-                <div class="flex justify-between items-center">
-                    <span class="text-xl font-black italic uppercase text-red-500">Total a Pagar</span>
-                    <span id="total" class="text-4xl font-black text-yellow-400">$0</span>
+            <section class="bg-gray-900 text-white p-6 rounded-3xl shadow-2xl">
+                <div class="flex justify-between items-center mb-2 opacity-60 text-[10px] font-bold uppercase tracking-wider">
+                    <span>Subtotal del Pedido</span>
+                    <span id="subtotal" class="font-bold">$0</span>
+                </div>
+                <div class="flex justify-between items-center border-t border-gray-700 pt-4">
+                    <span class="text-xl font-black italic text-red-500 uppercase">Total a Pagar</span>
+                    <span id="total" class="text-4xl font-black text-yellow-400 tracking-tighter">$0</span>
                 </div>
             </section>
 
-            <button onclick="enviarWhatsApp()" class="w-full bg-[#25D366] text-white py-5 rounded-3xl font-black text-xl shadow-xl flex items-center justify-center gap-3 active:scale-95 transition-all">
-                <i class="fab fa-whatsapp text-3xl"></i> PEDIR AHORA
+            <button onclick="enviarWhatsApp()" class="w-full bg-[#25D366] text-white py-5 rounded-3xl font-black text-xl shadow-xl flex items-center justify-center gap-3 active:scale-95 transition-transform">
+                <i class="fab fa-whatsapp text-3xl"></i> CONFIRMAR PEDIDO
             </button>
 
             <footer class="text-center pt-8">
-                <p class="text-[9px] text-gray-400 uppercase font-black tracking-[3px] mb-2">Desarrollado por</p>
-                <div class="inline-flex flex-col items-center bg-white px-8 py-3 rounded-2xl border shadow-sm">
-                    <span class="text-blue-700 font-black text-xl tracking-tighter uppercase">Vibras Positivas</span>
-                    <span class="text-[9px] text-gray-500 font-bold uppercase mt-1">© Todos los derechos reservados 2026</span>
+                <p class="text-[9px] text-gray-400 uppercase font-black tracking-[4px] mb-2">Desarrollado por</p>
+                <div class="inline-flex flex-col items-center bg-white px-8 py-4 rounded-3xl border shadow-sm">
+                    <span class="text-blue-700 font-black text-xl tracking-tighter uppercase">VIBRAS POSITIVAS</span>
+                    <div class="h-[1px] w-full bg-gray-100 my-1"></div>
+                    <span class="text-[9px] text-gray-500 font-bold uppercase tracking-tight">© Derechos Reservados 2026</span>
                 </div>
             </footer>
         </main>
     </div>
 
     <script>
-        let precio = 7500;
-        let cant = 0;
+        // CONFIGURACIÓN DE VENCIMIENTO (AÑO, MES [0-11], DIA)
+        // Ejemplo: Vence el 10 de Marzo de 2026
+        const fechaVencimiento = new Date(2026, 2, 10); 
 
-        function cambiarCantidad(v) {
-            cant += v;
-            if (cant < 0) cant = 0;
-            document.getElementById('cantidad').innerText = cant;
-            document.getElementById('total').innerText = '$' + (cant * precio).toLocaleString();
+        function validarVencimiento() {
+            if (new Date() > fechaVencimiento) {
+                document.getElementById('app-content').style.display = 'none';
+                document.getElementById('vencido').style.display = 'flex';
+            }
+        }
+        validarVencimiento();
+
+        let precioLibra = 7500;
+        let cantidad = 0;
+
+        function cambiarCantidad(valor) {
+            cantidad += valor;
+            if (cantidad < 0) cantidad = 0;
+            actualizarInterfaz();
+        }
+
+        function actualizarInterfaz() {
+            let total = cantidad * precioLibra;
+            document.getElementById('cantidad').innerText = cantidad;
+            document.getElementById('subtotal').innerText = '$' + total.toLocaleString();
+            document.getElementById('total').innerText = '$' + total.toLocaleString();
         }
 
         function enviarWhatsApp() {
-            const n = document.getElementById('nombre').value;
-            const d = document.getElementById('direccion').value;
-            if (!n || !d || cant === 0) { alert("Completa tus datos y la cantidad"); return; }
+            const nombre = document.getElementById('nombre').value;
+            const direccion = document.getElementById('direccion').value;
+            const telefono = document.getElementById('telefono').value;
+            const total = cantidad * precioLibra;
+
+            if (!nombre || !direccion || !telefono || cantidad === 0) {
+                alert("⚠️ Por favor completa tu Nombre, Dirección, Celular y la cantidad de Libras.");
+                return;
+            }
+
+            const mensaje = 
+                `*NUEVO PEDIDO - POLLOS YAMITH*%0A` +
+                `------------------------------------%0A` +
+                `👤 *Cliente:* ${nombre}%0A` +
+                `📍 *Dirección:* ${direccion}%0A` +
+                `📱 *Celular:* ${telefono}%0A` +
+                `------------------------------------%0A` +
+                `🍗 *Producto:* Pollo Semi-Criollo%0A` +
+                `⚖️ *Cantidad:* ${cantidad} Libras%0A` +
+                `💰 *TOTAL:* $${total.toLocaleString()}%0A` +
+                `------------------------------------%0A` +
+                `_Desarrollado por Vibras Positivas ©_`;
             
-            const msg = `*NUEVO PEDIDO - POLLOS YAMITH*%0A--------------------------%0A👤 *Cliente:* ${n}%0A📍 *Dir:* ${d}%0A⚖️ *Cant:* ${cant} Libras%0A💰 *TOTAL:* $${(cant * precio).toLocaleString()}%0A--------------------------%0A_Enviado desde la App de Vibras Positivas ©_`;
-            window.open(`https://wa.me/573116346595?text=${msg}`, '_blank');
+            window.open(`https://wa.me/573116346595?text=${mensaje}`, '_blank');
         }
     </script>
 </body>
