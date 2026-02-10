@@ -8,20 +8,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         .gradient-header { background: linear-gradient(135deg, #b91c1c 0%, #ef4444 100%); }
-        #vencido { display: none; }
     </style>
 </head>
 <body class="bg-gray-100 text-gray-800 font-sans pb-10">
-
-    <div id="vencido" class="fixed inset-0 bg-white z-50 flex flex-col items-center justify-center p-10 text-center">
-        <i class="fas fa-clock text-red-500 text-6xl mb-4"></i>
-        <h1 class="text-2xl font-black">SUSCRIPCIÓN VENCIDA</h1>
-        <p class="text-gray-600 mt-2">Contacte al desarrollador para renovar el servicio.</p>
-        <div class="mt-6 bg-blue-50 p-4 rounded-2xl">
-            <span class="text-blue-700 font-black text-xl">VIBRAS POSITIVAS</span>
-            <p class="text-[10px] text-gray-400 uppercase">© Todos los derechos reservados</p>
-        </div>
-    </div>
 
     <div id="app-content">
         <header class="gradient-header text-white p-6 text-center shadow-lg">
@@ -40,23 +29,20 @@
             </div>
 
             <section class="bg-white p-5 rounded-3xl shadow-md border-t-8 border-red-600">
-                <h3 class="font-black text-[10px] text-gray-400 uppercase mb-4 tracking-widest">Información de Entrega</h3>
+                <h3 class="font-black text-[10px] text-gray-400 uppercase mb-4 tracking-widest">Tus Datos</h3>
                 <div class="space-y-3">
-                    <input type="text" id="nombre" placeholder="Nombre completo" class="w-full p-4 bg-gray-50 border rounded-2xl outline-none focus:ring-2 focus:ring-red-500">
-                    <input type="text" id="direccion" placeholder="Dirección y Ciudad" class="w-full p-4 bg-gray-50 border rounded-2xl outline-none focus:ring-2 focus:ring-red-500">
-                    <input type="tel" id="telefono" placeholder="Número de Celular" class="w-full p-4 bg-gray-50 border rounded-2xl outline-none focus:ring-2 focus:ring-red-500">
+                    <input type="text" id="nombre" placeholder="¿A nombre de quién?" class="w-full p-4 bg-gray-50 border rounded-2xl outline-none focus:ring-2 focus:ring-red-500">
+                    <input type="text" id="direccion" placeholder="Dirección exacta" class="w-full p-4 bg-gray-50 border rounded-2xl outline-none focus:ring-2 focus:ring-red-500">
                 </div>
             </section>
 
             <section class="bg-white p-5 rounded-3xl shadow-md">
-                <div class="flex items-center gap-4 mb-5 text-left">
-                    <div class="bg-red-50 p-4 rounded-2xl text-red-600 border border-red-100">
-                        <i class="fas fa-drumstick-bite text-2xl"></i>
-                    </div>
-                    <div>
+                <div class="flex items-center justify-between mb-5">
+                    <div class="flex items-center gap-3">
+                        <i class="fas fa-drumstick-bite text-red-600 text-2xl"></i>
                         <h2 class="font-black text-lg text-gray-800 uppercase">Libra de Pollo</h2>
-                        <p class="text-green-600 font-black text-2xl">$7.500</p>
                     </div>
+                    <p class="text-green-600 font-black text-2xl">$7.500</p>
                 </div>
                 <div class="bg-gray-100 p-4 rounded-2xl flex items-center justify-between border">
                     <span class="font-black text-gray-400 uppercase text-[10px]">Cantidad</span>
@@ -69,34 +55,27 @@
             </section>
 
             <section class="bg-gray-900 text-white p-6 rounded-3xl shadow-xl">
-                <div class="flex justify-between items-center border-t border-gray-700 pt-2">
-                    <span class="text-xl font-black italic uppercase text-red-500">Total</span>
+                <div class="flex justify-between items-center">
+                    <span class="text-xl font-black italic uppercase text-red-500">Total a Pagar</span>
                     <span id="total" class="text-4xl font-black text-yellow-400">$0</span>
                 </div>
             </section>
 
             <button onclick="enviarWhatsApp()" class="w-full bg-[#25D366] text-white py-5 rounded-3xl font-black text-xl shadow-xl flex items-center justify-center gap-3 active:scale-95 transition-all">
-                <i class="fab fa-whatsapp text-3xl"></i> CONFIRMAR PEDIDO
+                <i class="fab fa-whatsapp text-3xl"></i> PEDIR AHORA
             </button>
 
             <footer class="text-center pt-8">
-                <p class="text-[9px] text-gray-400 uppercase font-black tracking-[3px] mb-2">App desarrollada por</p>
+                <p class="text-[9px] text-gray-400 uppercase font-black tracking-[3px] mb-2">Desarrollado por</p>
                 <div class="inline-flex flex-col items-center bg-white px-8 py-3 rounded-2xl border shadow-sm">
-                    <span class="text-blue-700 font-black text-xl tracking-tighter">VIBRAS POSITIVAS</span>
-                    <span class="text-[9px] text-gray-500 font-bold uppercase mt-1">© Todos los derechos reservados</span>
+                    <span class="text-blue-700 font-black text-xl tracking-tighter uppercase">Vibras Positivas</span>
+                    <span class="text-[9px] text-gray-500 font-bold uppercase mt-1">© Todos los derechos reservados 2026</span>
                 </div>
             </footer>
         </main>
     </div>
 
     <script>
-        // Fecha de Vencimiento: 10 de Marzo de 2026
-        const fechaVencimiento = new Date(2026, 2, 10); 
-        if (new Date() > fechaVencimiento) {
-            document.getElementById('app-content').style.display = 'none';
-            document.getElementById('vencido').style.display = 'flex';
-        }
-
         let precio = 7500;
         let cant = 0;
 
@@ -110,9 +89,9 @@
         function enviarWhatsApp() {
             const n = document.getElementById('nombre').value;
             const d = document.getElementById('direccion').value;
-            if (!n || !d || cant === 0) { alert("Complete los datos"); return; }
+            if (!n || !d || cant === 0) { alert("Completa tus datos y la cantidad"); return; }
             
-            const msg = `*PEDIDO POLLOS YAMITH*%0A👤 *Cliente:* ${n}%0A📍 *Dir:* ${d}%0A⚖️ *Cant:* ${cant} Libras%0A💰 *TOTAL:* $${(cant * precio).toLocaleString()}%0A%0A_Vibras Positivas ©_`;
+            const msg = `*NUEVO PEDIDO - POLLOS YAMITH*%0A--------------------------%0A👤 *Cliente:* ${n}%0A📍 *Dir:* ${d}%0A⚖️ *Cant:* ${cant} Libras%0A💰 *TOTAL:* $${(cant * precio).toLocaleString()}%0A--------------------------%0A_Enviado desde la App de Vibras Positivas ©_`;
             window.open(`https://wa.me/573116346595?text=${msg}`, '_blank');
         }
     </script>
