@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pollos Yamith | App de Pedidos</title>
+    <title>Pollos Yamith | Pedidos</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -14,32 +14,33 @@
 <body class="bg-gray-100 text-gray-800 font-sans pb-10">
 
     <div id="vencido" class="fixed inset-0 bg-white z-50 flex flex-col items-center justify-center p-10 text-center">
-        <i class="fas fa-lock text-red-500 text-6xl mb-4"></i>
-        <h1 class="text-2xl font-black text-gray-800 uppercase">Suscripción Vencida</h1>
-        <p class="text-gray-600 mt-2">Acceso restringido. Por favor contacte al desarrollador.</p>
-        <div class="mt-6 bg-gray-50 p-4 rounded-2xl border">
-            <span class="text-blue-600 font-black text-xl tracking-tighter">VIBRAS POSITIVAS</span>
-            <p class="text-[10px] text-gray-400 font-bold uppercase">© Todos los derechos reservados</p>
+        <i class="fas fa-clock text-red-500 text-6xl mb-4"></i>
+        <h1 class="text-2xl font-black">SUSCRIPCIÓN VENCIDA</h1>
+        <p class="text-gray-600 mt-2">Contacte al desarrollador para renovar el servicio.</p>
+        <div class="mt-6 bg-blue-50 p-4 rounded-2xl">
+            <span class="text-blue-700 font-black text-xl">VIBRAS POSITIVAS</span>
+            <p class="text-[10px] text-gray-400 uppercase">© Todos los derechos reservados</p>
         </div>
-        <a href="https://wa.me/573116346595?text=Hola! Mi suscripción de la App Pollos Yamith ha vencido." class="mt-6 bg-green-500 text-white px-8 py-3 rounded-full font-bold shadow-lg">RENOVAR AHORA</a>
     </div>
 
     <div id="app-content">
-        <header class="gradient-header text-white p-6 text-center shadow-md relative">
+        <header class="gradient-header text-white p-6 text-center shadow-lg">
             <div class="flex justify-center mb-3">
-                <img src="pollo-yamith.png" alt="Logo Pollos Yamith" class="h-24 w-24 rounded-full border-4 border-white shadow-xl bg-white object-cover">
+                <img src="pollo-jamith.png" alt="Logo Pollos Yamith" 
+                     onerror="this.src='https://via.placeholder.com/150?text=Pollos+Yamith'"
+                     class="h-28 w-28 rounded-full border-4 border-white shadow-2xl bg-white object-cover">
             </div>
-            <h1 class="text-3xl font-black uppercase tracking-tighter leading-none">Pollos Yamith</h1>
-            <p class="text-xs font-bold opacity-90 mt-1 italic italic">Sabor Semi-Criollo de Calidad</p>
+            <h1 class="text-3xl font-black uppercase tracking-tighter">Pollos Yamith</h1>
+            <p class="text-xs font-bold opacity-90 italic">Sabor Semi-Criollo de Calidad</p>
         </header>
 
         <main class="max-w-md mx-auto p-4 space-y-5">
-            <div class="text-center bg-white py-2 rounded-xl shadow-sm border text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+            <div class="text-center bg-white py-2 rounded-xl border text-[10px] text-gray-400 font-bold uppercase tracking-widest">
                 Aldea verde manzana 46 lote 4, Barrio Paraguay
             </div>
 
             <section class="bg-white p-5 rounded-3xl shadow-md border-t-8 border-red-600">
-                <h3 class="font-black text-xs text-gray-400 uppercase tracking-widest mb-4">Datos del Cliente</h3>
+                <h3 class="font-black text-[10px] text-gray-400 uppercase mb-4 tracking-widest">Información de Entrega</h3>
                 <div class="space-y-3">
                     <input type="text" id="nombre" placeholder="Nombre completo" class="w-full p-4 bg-gray-50 border rounded-2xl outline-none focus:ring-2 focus:ring-red-500">
                     <input type="text" id="direccion" placeholder="Dirección y Ciudad" class="w-full p-4 bg-gray-50 border rounded-2xl outline-none focus:ring-2 focus:ring-red-500">
@@ -48,7 +49,7 @@
             </section>
 
             <section class="bg-white p-5 rounded-3xl shadow-md">
-                <div class="flex items-center gap-4 mb-5">
+                <div class="flex items-center gap-4 mb-5 text-left">
                     <div class="bg-red-50 p-4 rounded-2xl text-red-600 border border-red-100">
                         <i class="fas fa-drumstick-bite text-2xl"></i>
                     </div>
@@ -60,80 +61,59 @@
                 <div class="bg-gray-100 p-4 rounded-2xl flex items-center justify-between border">
                     <span class="font-black text-gray-400 uppercase text-[10px]">Cantidad</span>
                     <div class="flex items-center gap-6">
-                        <button onclick="cambiarCantidad(-1)" class="bg-white text-red-600 w-10 h-10 rounded-full font-black text-xl shadow border border-red-100">-</button>
+                        <button onclick="cambiarCantidad(-1)" class="bg-white text-red-600 w-10 h-10 rounded-full font-black text-xl shadow">-</button>
                         <span id="cantidad" class="text-2xl font-black">0</span>
                         <button onclick="cambiarCantidad(1)" class="bg-red-600 text-white w-10 h-10 rounded-full font-black text-xl shadow">+</button>
                     </div>
                 </div>
             </section>
 
-            <section class="bg-gray-900 text-white p-6 rounded-3xl shadow-2xl">
-                <div class="flex justify-between items-center mb-2 opacity-60 text-xs font-bold uppercase">
-                    <span>Subtotal</span>
-                    <span id="subtotal">$0</span>
-                </div>
-                <div class="flex justify-between items-center border-t border-gray-700 pt-4">
-                    <span class="text-xl font-black italic text-red-500 uppercase">Total</span>
-                    <span id="total" class="text-4xl font-black text-yellow-400 tracking-tighter">$0</span>
+            <section class="bg-gray-900 text-white p-6 rounded-3xl shadow-xl">
+                <div class="flex justify-between items-center border-t border-gray-700 pt-2">
+                    <span class="text-xl font-black italic uppercase text-red-500">Total</span>
+                    <span id="total" class="text-4xl font-black text-yellow-400">$0</span>
                 </div>
             </section>
 
-            <button onclick="enviarWhatsApp()" class="w-full bg-[#25D366] text-white py-5 rounded-3xl font-black text-xl shadow-xl flex items-center justify-center gap-3 active:scale-95 transition-transform">
+            <button onclick="enviarWhatsApp()" class="w-full bg-[#25D366] text-white py-5 rounded-3xl font-black text-xl shadow-xl flex items-center justify-center gap-3 active:scale-95 transition-all">
                 <i class="fab fa-whatsapp text-3xl"></i> CONFIRMAR PEDIDO
             </button>
 
-            <footer class="text-center pt-6">
-                <p class="text-[9px] text-gray-400 uppercase font-black tracking-[4px] mb-2">App desarrollada por</p>
-                <div class="inline-flex items-center gap-2 bg-white px-5 py-2 rounded-full border shadow-sm">
-                    <span class="text-blue-700 font-black text-lg tracking-tighter">VIBRAS POSITIVAS</span>
-                    <span class="text-[10px] text-gray-400 font-bold border-l pl-2">© Derechos Reservados</span>
+            <footer class="text-center pt-8">
+                <p class="text-[9px] text-gray-400 uppercase font-black tracking-[3px] mb-2">App desarrollada por</p>
+                <div class="inline-flex flex-col items-center bg-white px-8 py-3 rounded-2xl border shadow-sm">
+                    <span class="text-blue-700 font-black text-xl tracking-tighter">VIBRAS POSITIVAS</span>
+                    <span class="text-[9px] text-gray-500 font-bold uppercase mt-1">© Todos los derechos reservados</span>
                 </div>
             </footer>
         </main>
     </div>
 
     <script>
-        // CONFIGURACIÓN DE VENCIMIENTO (AÑO, MES [0-11], DIA)
-        const fechaVencimiento = new Date(2026, 2, 10); // Expira 10 de Marzo 2026
-
-        function validarVencimiento() {
-            if (new Date() > fechaVencimiento) {
-                document.getElementById('app-content').style.display = 'none';
-                document.getElementById('vencido').style.display = 'flex';
-            }
-        }
-        validarVencimiento();
-
-        let precioLibra = 7500;
-        let cantidad = 0;
-
-        function cambiarCantidad(valor) {
-            cantidad += valor;
-            if (cantidad < 0) cantidad = 0;
-            actualizarInterfaz();
+        // Fecha de Vencimiento: 10 de Marzo de 2026
+        const fechaVencimiento = new Date(2026, 2, 10); 
+        if (new Date() > fechaVencimiento) {
+            document.getElementById('app-content').style.display = 'none';
+            document.getElementById('vencido').style.display = 'flex';
         }
 
-        function actualizarInterfaz() {
-            let total = cantidad * precioLibra;
-            document.getElementById('cantidad').innerText = cantidad;
-            document.getElementById('subtotal').innerText = '$' + total.toLocaleString();
-            document.getElementById('total').innerText = '$' + total.toLocaleString();
+        let precio = 7500;
+        let cant = 0;
+
+        function cambiarCantidad(v) {
+            cant += v;
+            if (cant < 0) cant = 0;
+            document.getElementById('cantidad').innerText = cant;
+            document.getElementById('total').innerText = '$' + (cant * precio).toLocaleString();
         }
 
         function enviarWhatsApp() {
-            const nombre = document.getElementById('nombre').value;
-            const direccion = document.getElementById('direccion').value;
-            const telefono = document.getElementById('telefono').value;
-            const total = cantidad * precioLibra;
-
-            if (!nombre || !direccion || cantidad === 0) {
-                alert("⚠️ Por favor completa los datos y la cantidad.");
-                return;
-            }
-
-            const mensaje = `*PEDIDO POLLOS YAMITH*%0A--------------------------%0A👤 *Cliente:* ${nombre}%0A📍 *Dirección:* ${direccion}%0A📱 *Celular:* ${telefono}%0A--------------------------%0A🍗 *Pedido:* ${cantidad} Libras%0A💰 *TOTAL:* $${total.toLocaleString()}%0A--------------------------%0A_Desarrollado por Vibras Positivas_`;
+            const n = document.getElementById('nombre').value;
+            const d = document.getElementById('direccion').value;
+            if (!n || !d || cant === 0) { alert("Complete los datos"); return; }
             
-            window.open(`https://wa.me/573116346595?text=${mensaje}`, '_blank');
+            const msg = `*PEDIDO POLLOS YAMITH*%0A👤 *Cliente:* ${n}%0A📍 *Dir:* ${d}%0A⚖️ *Cant:* ${cant} Libras%0A💰 *TOTAL:* $${(cant * precio).toLocaleString()}%0A%0A_Vibras Positivas ©_`;
+            window.open(`https://wa.me/573116346595?text=${msg}`, '_blank');
         }
     </script>
 </body>
