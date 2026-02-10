@@ -6,64 +6,117 @@
     <title>Pollos Yamith | Pedidos</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        .btn-whatsapp { background-color: #25D366; }
-        .bg-brand { background-color: #f3f4f6; }
-        .card-pollo { border-radius: 15px; overflow: hidden; }
-    </style>
 </head>
-<body class="bg-brand text-gray-800 font-sans">
+<body class="bg-gray-100 text-gray-800 font-sans pb-10">
 
     <header class="bg-red-600 text-white p-6 text-center shadow-lg">
         <h1 class="text-3xl font-bold uppercase tracking-wider">Pollos Yamith</h1>
-        <p class="text-sm opacity-90">Sabor Semi-Criollo de Calidad</p>
+        <p class="text-sm opacity-90">Ventas al por mayor y al detal</p>
     </header>
 
     <main class="max-w-md mx-auto p-4 space-y-6">
         
-        <section class="bg-white p-4 rounded-2xl shadow-sm border-l-4 border-red-500">
-            <p class="text-sm"><strong>📍 Ubicación:</strong> Aldea verde manzana 46 lote 4, Barrio Paraguay</p>
-            <p class="text-sm"><strong>🚚 Ventas:</strong> Al por mayor y al detal</p>
-        </section>
-
-        <section class="bg-white card-pollo shadow-md">
-            <div class="h-48 bg-gray-200 flex items-center justify-center">
-                <i class="fas fa-drumstick-bite text-red-500 text-6xl"></i>
-            </div>
-            <div class="p-4">
-                <div class="flex justify-between items-center">
-                    <h2 class="text-xl font-bold">Pollo Semi-Criollo</h2>
-                    <span class="bg-yellow-400 text-yellow-900 text-xs font-bold px-2 py-1 rounded">LO MÁS VENDIDO</span>
-                </div>
-                <p class="text-gray-600 text-sm mt-2">Fresco, natural y con el mejor sabor para tu hogar o negocio.</p>
-                <div class="mt-4 flex justify-between items-end">
-                    <div>
-                        <p class="text-gray-500 text-xs">Precio por Libra</p>
-                        <p class="text-2xl font-black text-red-600">$7.500</p>
-                    </div>
-                    <a href="https://wa.me/573116346595?text=Hola%20Pollos%20Yamith!%20Quiero%20hacer%20un%20pedido%20de%20pollo%20semi-criollo" 
-                       class="btn-whatsapp text-white px-6 py-3 rounded-xl font-bold flex items-center gap-2 shadow-lg">
-                        <i class="fab fa-whatsapp text-xl"></i> Pedir
-                    </a>
-                </div>
+        <section class="bg-white p-5 rounded-2xl shadow-md border-t-4 border-red-500">
+            <h3 class="font-bold mb-3 text-red-600"><i class="fas fa-user-edit mr-2"></i>Datos de Entrega</h3>
+            <div class="space-y-3">
+                <input type="text" id="nombre" placeholder="Nombre completo" class="w-full p-3 border rounded-xl focus:outline-red-500">
+                <input type="text" id="direccion" placeholder="Dirección y Ciudad (Ej: Barrio Paraguay)" class="w-full p-3 border rounded-xl focus:outline-red-500">
+                <input type="tel" id="telefono" placeholder="Número de celular" class="w-full p-3 border rounded-xl focus:outline-red-500">
             </div>
         </section>
 
-        <section class="bg-blue-600 text-white p-5 rounded-2xl shadow-md">
-            <h3 class="font-bold text-lg mb-1 italic">¿Tienes un negocio?</h3>
-            <p class="text-sm opacity-90 mb-4">Pregunta por nuestros precios especiales al por mayor para distribuidores.</p>
-            <a href="https://wa.me/573116346595?text=Hola%20Pollos%20Yamith!%20Me%20interesa%20conocer%20los%20precios%20al%20por%20mayor" 
-               class="block text-center bg-white text-blue-600 py-2 rounded-lg font-bold">
-                Consultar Precios Mayorista
-            </a>
+        <section class="bg-white p-5 rounded-2xl shadow-md">
+            <div class="flex items-center gap-4">
+                <div class="bg-yellow-100 p-4 rounded-xl text-yellow-600">
+                    <i class="fas fa-drumstick-bite text-3xl"></i>
+                </div>
+                <div class="flex-1">
+                    <h2 class="font-bold text-lg">Pollo Semi-Criollo</h2>
+                    <p class="text-red-600 font-bold">$7.500 <span class="text-gray-400 font-normal text-xs">/ Libra</span></p>
+                </div>
+            </div>
+
+            <div class="mt-6 flex items-center justify-between bg-gray-50 p-4 rounded-xl">
+                <span class="font-semibold text-gray-600">¿Cuántas libras?</span>
+                <div class="flex items-center gap-4">
+                    <button onclick="cambiarCantidad(-1)" class="bg-red-500 text-white w-10 h-10 rounded-full font-bold shadow-md">-</button>
+                    <span id="cantidad" class="text-xl font-bold">0</span>
+                    <button onclick="cambiarCantidad(1)" class="bg-green-500 text-white w-10 h-10 rounded-full font-bold shadow-md">+</button>
+                </div>
+            </div>
         </section>
+
+        <section class="bg-white p-5 rounded-2xl shadow-md">
+            <h3 class="font-bold mb-3 border-b pb-2">Resumen de Cuenta</h3>
+            <div class="flex justify-between text-sm mb-2">
+                <span>Subtotal (Libras: <span id="resumenCant">0</span>)</span>
+                <span id="subtotal">$0</span>
+            </div>
+            <div class="flex justify-between text-xl font-black text-red-600">
+                <span>TOTAL A PAGAR</span>
+                <span id="total">$0</span>
+            </div>
+        </section>
+
+        <button onclick="enviarWhatsApp()" class="w-full bg-green-500 hover:bg-green-600 text-white py-4 rounded-2xl font-bold text-lg shadow-xl flex items-center justify-center gap-3 transition-all">
+            <i class="fab fa-whatsapp text-2xl"></i> CONFIRMAR PEDIDO
+        </button>
+
+        <footer class="text-center space-y-2 mt-4">
+            <p class="text-xs text-gray-500 uppercase tracking-widest font-bold">App desarrollada por</p>
+            <p class="text-blue-600 font-black text-lg italic tracking-tighter shadow-sm inline-block px-4 py-1 bg-white rounded-full">
+                <i class="fas fa-bolt mr-1"></i> VIBRAS POSITIVAS
+            </p>
+            <div class="text-[10px] text-gray-400 pt-4">
+                Aldea verde manzana 46 lote 4, Barrio Paraguay
+            </div>
+        </footer>
 
     </main>
 
-    <footer class="text-center p-8 text-gray-400 text-xs">
-        <p>Pollos Yamith &copy; 2026</p>
-        <p>Barrio Paraguay, WhatsApp: 3116346595</p>
-    </footer>
+    <script>
+        let precioLibra = 7500;
+        let cantidad = 0;
 
+        function cambiarCantidad(valor) {
+            cantidad += valor;
+            if (cantidad < 0) cantidad = 0;
+            actualizarInterfaz();
+        }
+
+        function actualizarInterfaz() {
+            let total = cantidad * precioLibra;
+            document.getElementById('cantidad').innerText = cantidad;
+            document.getElementById('resumenCant').innerText = cantidad;
+            document.getElementById('subtotal').innerText = '$' + total.toLocaleString();
+            document.getElementById('total').innerText = '$' + total.toLocaleString();
+        }
+
+        function enviarWhatsApp() {
+            const nombre = document.getElementById('nombre').value;
+            const direccion = document.getElementById('direccion').value;
+            const telefono = document.getElementById('telefono').value;
+            const total = cantidad * precioLibra;
+
+            if (!nombre || !direccion || cantidad === 0) {
+                alert("Por favor completa tus datos y selecciona al menos 1 libra.");
+                return;
+            }
+
+            const mensaje = `*PEDIDO POLLOS YAMITH*%0A` +
+                            `--------------------------%0A` +
+                            `*Cliente:* ${nombre}%0A` +
+                            `*Dirección:* ${direccion}%0A` +
+                            `*Celular:* ${telefono}%0A` +
+                            `--------------------------%0A` +
+                            `*Pedido:* ${cantidad} Libras de Pollo Semi-Criollo%0A` +
+                            `*Total a Pagar:* $${total.toLocaleString()}%0A` +
+                            `--------------------------%0A` +
+                            `_Enviado desde la App de Vibras Positivas_`;
+
+            const url = `https://wa.me/573116346595?text=${mensaje}`;
+            window.open(url, '_blank');
+        }
+    </script>
 </body>
 </html>
